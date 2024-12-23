@@ -39,33 +39,43 @@
   text-align: center;  
   padding: 10px;
   /* margin-top: 20px; */
-  color: rgba(246, 127, 255, 0.964);
+  color: rgb(246, 127, 255);
 }
 body{
+    
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(127, 255, 212, 0.447);
+    background-color: rgba(127, 255, 212, 0.295);
     color: rgb(255, 255, 255);
 }
 #quiz_area{
+    position:relative;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    width: 400px;
-    height: 600px;
+    width: 450px;
+    height: 100%;
+    gap: 10px;
     background-color: aliceblue;
     border-radius: 20px;
-    box-shadow: 0px 0px 20px rgb(94, 115, 121);
+    box-shadow: 0px 0px 10px rgb(94, 115, 121);
     color: black;
     align-items: center;
     justify-content: space-between;
     padding: 40px;
+    transition: box-shadow 1s ease-out;
 }
-.quiz_area >h1{
-    margin-top: 20px;
+
+
+#quiz_area:hover{
+  cursor: pointer;
+  box-shadow:  0px 0px 20px rgb(27, 136, 167);;
+}
+#quiz_area >h1{
+    font-size: 30px;
 }
 #start_btn{
     padding: 15px;
@@ -73,4 +83,58 @@ body{
     box-shadow: 0px 0px 12px rgb(25, 192, 72);
     border-radius: 20px;
     margin: 20px;
+    cursor: pointer;
+}
+ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  gap:16px;
+}
+.questionli{
+  color: black;
+  list-style-type: none;
+  width:100%;
+  padding: 4px;
+  text-align: center;
+  font-size: 14px;
+  transition: font-size 0.1s ease;
+}
+.questionli:hover{
+  border-bottom:2px solid pink;
+  font-size: 20px;
+}
+.questionli:last-child{
+  border: none;
+}
+.questions_div{
+  background-color:  rgb(246, 127, 255);
+  width: 90%;
+  height: 98%;
+  border-radius: 40%; 
+  position: absolute;
+  top: 8px;
+  max-height: 100%;
+  overflow-y: hidden;
+  display: none;
+}
+.slider{
+  display: block;
+  animation: slideToRight 1.5s ease;
+}
+.hidden{
+  display: none;
+  overflow-x: hidden;
+  background-color: red;
+}
+
+@keyframes slideToRight {
+  0%{
+    right: -70%;
+  }
+  100%{
+    right: 6%;
+  }
 }
