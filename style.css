@@ -47,7 +47,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(127, 255, 212, 0.295);
+    background-color: rgba(127, 255, 163, 0.482);
     color: rgb(255, 255, 255);
 }
 #quiz_area{
@@ -110,7 +110,8 @@ ul{
   border: none;
 }
 .questions_div{
-  background-color:  rgb(246, 127, 255);
+  background-color:  rgb(222, 120, 230);
+  box-shadow: 0px 0px 20px rgb(39, 1, 75);
   width: 90%;
   height: 98%;
   border-radius: 40%; 
