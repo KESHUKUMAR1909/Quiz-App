@@ -47,7 +47,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(185, 127, 255, 0.301);
+    background-color: rgba(151, 91, 224, 0.301);
     color: rgb(255, 255, 255);
 }
 #quiz_area{
@@ -59,9 +59,9 @@ body{
     width: 450px;
     height: 100%;
     gap: 10px;
-    background-color: aliceblue;
+    background-color: rgb(196, 222, 244);
     border-radius: 20px;
-    box-shadow: 0px 0px 20px rgb(63, 192, 228);
+    box-shadow: 0px 0px 20px rgb(23, 53, 61);
     color: black;
     align-items: center;
     justify-content: space-between;
@@ -134,6 +134,7 @@ ul{
   overflow-y: hidden;
   display: none;
   padding: 15%;
+  /* display: hidden; */
 }
 .optionUl{
    display: inline-flex;
@@ -153,14 +154,16 @@ ul{
 } */
 .slider{
   display: block;
-  animation: slideToRight 1.5s ease;
+  animation: slideToRight 2s ease forwards;
+
 }
 .slider2{
-  animation: slideToRightMore 1.5s ease;
+  animation: slideToRightMore 2s ease forwards;
 }
+
 .hidden{
   display: none;
-  overflow-x: hidden;
+  overflow-x:hidden;
   background-color: red;
 }
 .QuestionContent{
@@ -187,6 +190,7 @@ ul{
   }
   100%{
     right: 6%;
+   
   }
 }
 @keyframes slideToRightMore{
@@ -194,6 +198,6 @@ ul{
      right: 15%;
   }
   100%{
-    right: 100%;
+    right: 110%;
   }
 }

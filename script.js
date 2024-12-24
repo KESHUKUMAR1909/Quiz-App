@@ -51,20 +51,22 @@ async function getQuestions() {
 
     function showTheQuestionPage(i) {
       console.log(`index ${i} hitted`);
+      let j =i;
       let div2 = document.createElement("div");
       div2.classList.add("questions_div2");
       div2.classList.add("slider");
       div.classList.add("slider2");
       let p = document.createElement("p");
-      p.classList.add("question_p_tag")
+      p.classList.add("question_p_tag");
       p.textContent += `Ques${i + 1}-> ${questionArray[i].question}`;
       let optionUl = document.createElement("ul");
       optionUl.classList.add("optionUl")
       optionUl.innerHTML += `<li> ${1}.  ${questionArray[i].correct_answer}</li>`;
-      for (let i = 0; i < questionArray[i].incorrect_answers.length; i++) {
-        console.log(questionArray[i].incorrect_answers[i]);
-        optionUl.innerHTML += `<li> ${i + 2}.  ${questionArray[i].incorrect_answers[i]}</li>`;
+      for (let i = 0; i < questionArray[j].incorrect_answers.length; i++) {
+        console.log(questionArray[j].incorrect_answers[i]);
+        optionUl.innerHTML += `<li> ${i + 2}.  ${questionArray[j].incorrect_answers[i]}</li>`;
       }
+     
       let BtnContainer = document.createElement("div");
       BtnContainer.classList.add("next_prev_btn")
       let nextBtn = document.createElement("button");
@@ -78,7 +80,31 @@ async function getQuestions() {
       div2.appendChild(BtnContainer);
       quiz_area.appendChild(div2);
 
+      nextBtn.addEventListener("click",()=>{
+        showTheNextQuestion(i,div2);
+      });
+      prevBtn.addEventListener("click",()=>{
+        showThePreviousQuestioin(i,div2);
+      })
 
+
+    }
+    function showTheNextQuestion(i ,div2){
+      if(i<quesArr.length-1){
+        div2.classList.add("slider2");
+        i+=1
+        showTheQuestionPage(i);
+       
+       }
+    }
+    function showThePreviousQuestioin(i,div2){
+       if(i>0){
+        div2.classList.add("slider2");
+        i-=1;
+        showTheQuestionPage(i);
+       
+       }
+        
     }
 
     // Adding event listeners to the li element
