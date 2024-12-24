@@ -39,7 +39,7 @@
   text-align: center;  
   padding: 10px;
   /* margin-top: 20px; */
-  color: rgb(246, 127, 255);
+  color: rgb(178, 8, 190);
 }
 body{
     
@@ -47,7 +47,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(127, 255, 163, 0.482);
+    background-color: rgba(185, 127, 255, 0.301);
     color: rgb(255, 255, 255);
 }
 #quiz_area{
@@ -61,18 +61,18 @@ body{
     gap: 10px;
     background-color: aliceblue;
     border-radius: 20px;
-    box-shadow: 0px 0px 10px rgb(94, 115, 121);
+    box-shadow: 0px 0px 20px rgb(63, 192, 228);
     color: black;
     align-items: center;
     justify-content: space-between;
     padding: 40px;
-    transition: box-shadow 1s ease-out;
+    transition: box-shadow 1s ease-in-out;
 }
 
 
 #quiz_area:hover{
   cursor: pointer;
-  box-shadow:  0px 0px 20px rgb(27, 136, 167);;
+  box-shadow:  0px 0px 50px rgb(27, 136, 167);;
 }
 #quiz_area >h1{
     font-size: 30px;
@@ -121,21 +121,79 @@ ul{
   overflow-y: hidden;
   display: none;
 }
+.questions_div2{
+  background-color:  rgb(222, 120, 230);
+  box-shadow: 0px 0px 20px rgb(39, 1, 75);
+  width: 90%;
+  height: 98%;
+  border-radius: 40%; 
+  position: absolute;
+  top: 8px;
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow-y: hidden;
+  display: none;
+  padding: 15%;
+}
+.optionUl{
+   display: inline-flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-top: 10%;
+   gap: 10px;
+   align-items:flex-start;
+   /* list-style-type: circle; */
+}
+.optionUl >li{
+  list-style: circle;
+}
+/* .question_p_tag{
+  position: relative;
+  top: 15%;
+} */
 .slider{
   display: block;
   animation: slideToRight 1.5s ease;
+}
+.slider2{
+  animation: slideToRightMore 1.5s ease;
 }
 .hidden{
   display: none;
   overflow-x: hidden;
   background-color: red;
 }
+.QuestionContent{
+  color: black;
+  /* background-color: red; */
+}
+.next_prev_btn{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20%;
+}
+.next_prev_btn>button{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20%;
+  background-color: rgba(198, 245, 11, 0.536);
+}
 
 @keyframes slideToRight {
   0%{
-    right: -70%;
+    right: -100%;
   }
   100%{
     right: 6%;
+  }
+}
+@keyframes slideToRightMore{
+  0%{
+     right: 15%;
+  }
+  100%{
+    right: 100%;
   }
 }

@@ -14,7 +14,7 @@ async function getQuestions() {
     const questions = await response.json(); // Await JSON parsing
     // Getting the Questions Array From the  questions we got  along with the answers 
     const questionArray = questions.results;
-    console.table(questionArray);
+    console.log(questions.results);
 
 
     // Making the array of only questions 
@@ -29,26 +29,65 @@ async function getQuestions() {
     let ul = document.createElement("ul");
     div.appendChild(ul);
 
-    for(let i =0;i<quesArr.length;i++) {
-        ul.innerHTML+=`<li class="questionli">Question${i+1}</>`
+    for (let i = 0; i < quesArr.length; i++) {
+      ul.innerHTML += `<li class="questionli">Question${i + 1}</>`
     }
-    let quiz_area= document.getElementById("quiz_area");
+    let quiz_area = document.getElementById("quiz_area");
     quiz_area.appendChild(div);
 
-    function showtheNextPage(){
+    function showtheNextPage() {
       div.classList.add("slider");
       quiz_area.classList.add("hidden")
-    
+
     }
-   
 
     // Adding event listener to the Start Button------------>
     let strtBtn = document.getElementById("start_btn");
     console.log(strtBtn);
-    strtBtn.addEventListener("click",(e)=>{
+    strtBtn.addEventListener("click", (e) => {
       console.log("Button Clicked")
       showtheNextPage(e);
-    })
+    });
+
+    function showTheQuestionPage(i) {
+      console.log(`index ${i} hitted`);
+      let div2 = document.createElement("div");
+      div2.classList.add("questions_div2");
+      div2.classList.add("slider");
+      div.classList.add("slider2");
+      let p = document.createElement("p");
+      p.classList.add("question_p_tag")
+      p.textContent += `Ques${i + 1}-> ${questionArray[i].question}`;
+      let optionUl = document.createElement("ul");
+      optionUl.classList.add("optionUl")
+      optionUl.innerHTML += `<li> ${1}.  ${questionArray[i].correct_answer}</li>`;
+      for (let i = 0; i < questionArray[i].incorrect_answers.length; i++) {
+        console.log(questionArray[i].incorrect_answers[i]);
+        optionUl.innerHTML += `<li> ${i + 2}.  ${questionArray[i].incorrect_answers[i]}</li>`;
+      }
+      let BtnContainer = document.createElement("div");
+      BtnContainer.classList.add("next_prev_btn")
+      let nextBtn = document.createElement("button");
+      let prevBtn = document.createElement("button");
+      nextBtn.textContent += "Next";
+      prevBtn.textContent += "Prev";
+      BtnContainer.appendChild(prevBtn);
+      BtnContainer.appendChild(nextBtn);
+      div2.appendChild(p);
+      div2.appendChild(optionUl);
+      div2.appendChild(BtnContainer);
+      quiz_area.appendChild(div2);
+
+
+    }
+
+    // Adding event listeners to the li element
+    let quesLi = Array.from(document.getElementsByClassName("questionli"));
+    for (let i = 0; i < quesLi.length; i++) {
+      quesLi[i].addEventListener("click", () => {
+        showTheQuestionPage(i);
+      })
+    }
 
   } catch (error) {
     console.error("Error fetching quiz questions:", error.message);
