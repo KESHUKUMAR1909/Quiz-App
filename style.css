@@ -137,6 +137,7 @@ ul{
   /* display: hidden; */
 }
 .optionUl{
+  width: 100%;
    display: inline-flex;
    flex-direction: column;
    justify-content: center;
@@ -146,6 +147,7 @@ ul{
    /* list-style-type: circle; */
 }
 .optionUl >li{
+  width: 90%;
   list-style: circle;
 }
 /* .question_p_tag{
@@ -154,11 +156,11 @@ ul{
 } */
 .slider{
   display: block;
-  animation: slideToRight 2s ease forwards;
-
+  animation: slideToRightMore 2s ease forwards;
 }
 .slider2{
-  animation: slideToRightMore 2s ease forwards;
+  /* display: block; */
+  animation: slideToRight 2s ease forwards;
 }
 
 .hidden{
@@ -183,21 +185,34 @@ ul{
   border-radius: 20%;
   background-color: rgba(198, 245, 11, 0.536);
 }
-
-@keyframes slideToRight {
-  0%{
-    right: -100%;
-  }
-  100%{
-    right: 6%;
-   
-  }
+.spanBox{
+  width: 20px;
+  height: 10px;
+  background-color: azure;
+  border: 2px solid black;
+  border-radius: 150%;
 }
+.optionDiv{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @keyframes slideToRightMore{
+ 0%{
+  right: -100%;
+ }
+ 100%{
+   right:6% ;
+ }
+}
+@keyframes slideToRight{
   0%{
-     right: 15%;
+    right: 15%;
   }
   100%{
     right: 110%;
   }
-}
+
+} 
