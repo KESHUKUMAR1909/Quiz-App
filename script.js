@@ -20,7 +20,7 @@ async function getQuestions() {
     const questions = await response.json();
     questionArray = questions.results;
 
-    console.log(questions.results);
+    
 
     for (let i = 0; i < questionArray.length; i++) {
       quesArr.push(questionArray[i].question);
@@ -188,7 +188,7 @@ function checkValidation(i, element, spanBox) {
 
 }
 function showTheLastPage() {
-  console.log("eneterd the last page")
+  
   for (let i = 0; i < questionArray.length; i++) {
     lastPageArray.push(questionArray[i].question);
   }
