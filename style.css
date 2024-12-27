@@ -56,7 +56,7 @@ body{
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    width: 450px;
+    width: 400px;
     height: 100%;
     gap: 10px;
     background-color: rgb(196, 222, 244);
@@ -198,6 +198,42 @@ ul{
   justify-content: space-between;
   align-items: center;
 }
+.optionDiv2{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+
+}
+.questions_div3{
+  background-color:  rgb(222, 120, 230);
+  box-shadow: 0px 0px 20px rgb(39, 1, 75);
+  width: 89%;
+  height: 98%;
+  border-radius: 40%; 
+  position: absolute;
+  top: 8px;
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1%;
+}
+button{
+  border-radius: 10px;
+  text-align: center;
+  background-color: azure;
+  padding: 2px;
+}
+.transformClass{
+   font-size: 14px;
+   animation:blinking 2s ease-in-out infinite;
+}
+
 
 @keyframes slideToRightMore{
  0%{
@@ -216,3 +252,27 @@ ul{
   }
 
 } 
+@keyframes blinking {
+  0%{
+    font-size: 14px;
+  }
+  50%{
+    font-size: 20px;
+  }
+  100%{
+    font-size: 14px;
+  }
+}
+
+@media  screen and (max-width:700px) {
+  #quiz_area{
+    width: 90%;
+    height: 50%;
+  }
+}
+@media  screen and (min-width:701px) and (max-width:900px) {
+  #quiz_area{
+    width: 500px;
+   height: 700px;
+  }
+}
