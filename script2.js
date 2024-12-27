@@ -1,4 +1,4 @@
-let quesArr = [];
+let quesArr = []; // Initialize quesArr properly
 let questionPage = [];
 let nextBtn;
 let prevBtn;
@@ -6,10 +6,8 @@ let questionArray = [];
 let score = 0;
 let submit = false;
 
-
 async function getQuestions() {
   try {
-    // Fetching the Questions from The API
     const response = await fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple");
 
     if (!response.ok) {
@@ -19,11 +17,10 @@ async function getQuestions() {
     const questions = await response.json();
     questionArray = questions.results;
 
-    console.log(questions.results);
+    console.log(questionArray); // Log to check the structure
 
-    for (let i = 0; i < questionArray.length; i++) {
-      quesArr.push(questionArray[i].question);
-    }
+    // Populate quesArr with questions from API
+    quesArr = questionArray.map((question) => question.question); // Store questions in quesArr
 
     let div = document.createElement("div");
     div.classList.add("questions_div");
@@ -32,7 +29,7 @@ async function getQuestions() {
 
     let quiz_area = document.getElementById("quiz_area");
     for (let i = 0; i < quesArr.length; i++) {
-      ul.innerHTML += `<li class="questionli">Question${i + 1}</li>`;
+      ul.innerHTML += `<li class="questionli">Question ${i + 1}</li>`;
       await showTheQuestionPage(i);
     }
     quiz_area.appendChild(div);
@@ -43,6 +40,7 @@ async function getQuestions() {
       quiz_area.classList.add("hidden");
     });
 
+    // Handle navigation and interaction with each question
     for (let i = 0; i < questionPage.length; i++) {
       let next = questionPage[i].querySelector("#next");
       let prev = questionPage[i].querySelector("#prev");
@@ -54,7 +52,6 @@ async function getQuestions() {
         });
       });
 
-
       prev.addEventListener("click", () => {
         if (i >= 1) {
           questionPage[i].classList.add("slider2");
@@ -64,9 +61,7 @@ async function getQuestions() {
         }
       });
 
-
       next.addEventListener("click", function () {
-
         if (i < questionPage.length - 1) {
           if (submit == true) {
             questionPage[i].classList.add("slider2");
@@ -77,27 +72,26 @@ async function getQuestions() {
           } else {
             console.log(submit);
           }
-
         }
       });
 
+      // Check if all options for the current question have been attempted
       if (i == questionPage.length - 1) {
-        // Check if all elements in questionPage have attempt == true
-        if (questionPage.every(element => element.attempt === true)) {
+        if (Array.from(spanBox).every(element => element.hasAttribute("data-selected"))) {
           nextBtn.addEventListener("click", () => {
             console.log("hitted");
             showTheLastPage();
           });
         }
-      }      const nextScoreButton = questionPage[i].querySelector(".score_button");
+      }
+
+      const nextScoreButton = questionPage[i].querySelector(".score_button");
       nextScoreButton.addEventListener("click", function () {
         submit = true;
         console.log(submit);
-        nextScoreButton.textContent = `Score : ${score}`
+        nextScoreButton.textContent = `Score: ${score}`;
       });
-
     }
-
 
     function showTheQuestionPage(i) {
       let j = i;
@@ -106,12 +100,11 @@ async function getQuestions() {
       div2.classList.add("slider");
       let p = document.createElement("p");
       p.classList.add("question_p_tag");
-      p.textContent += `Ques${i + 1}-> ${questionArray[i].question}`;
+      p.textContent += `Ques${i + 1}-> ${quesArr[i]}`;
 
       let optionUl = document.createElement("ul");
       optionUl.classList.add("optionUl");
 
-      // Combine correct and incorrect answers and shuffle them
       let options = [...questionArray[i].incorrect_answers, questionArray[i].correct_answer];
       options = options.sort(() => Math.random() - 0.5);
 
@@ -159,27 +152,28 @@ async function getQuestions() {
 function checkValidation(i, element, spanBox) {
   Array.from(spanBox).forEach((item) => {
     item.style.backgroundColor = "white";
+    item.removeAttribute("data-selected"); // Remove previous selection
   });
   element.style.backgroundColor = "green";
+  element.setAttribute("data-selected", "true"); // Mark as selected
 
   let selectedAnswer = element.dataset.answer;
 
   if (questionArray[i].answered) {
     if (selectedAnswer !== questionArray[i].correct_answer) {
-      element.attempt = true;
       score -= 10;
       questionArray[i].answered = false;
     }
   } else {
     if (selectedAnswer === questionArray[i].correct_answer) {
-      element.attempt=true;
       score += 10;
       questionArray[i].answered = true;
     }
   }
-
 }
-function showTheLastPage(){
+
+function showTheLastPage() {
   console.log("hello");
 }
+
 getQuestions();
